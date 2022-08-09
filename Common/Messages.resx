@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessTokenExpired" xml:space="preserve">
+    <value>Access token has expired, please reload report to view it.</value>
+  </data>
+  <data name="ActivateAccount" xml:space="preserve">
+    <value>Please contact broker to activate your account.</value>
+  </data>
+  <data name="Activated" xml:space="preserve">
+    <value>{0} has been activated successfully.</value>
+  </data>
+  <data name="Added" xml:space="preserve">
+    <value>{0} has been added successfully.</value>
+  </data>
+  <data name="AffiliateNotExistsInTeam" xml:space="preserve">
+    <value>{0} does not exists in team. You cannot complete task.</value>
+  </data>
+  <data name="AllowNumberOnly" xml:space="preserve">
+    <value>{0} should contain digits only.</value>
+  </data>
+  <data name="AlreadyAddedLeaved" xml:space="preserve">
+    <value>You have already added leave on selected date and time range.</value>
+  </data>
+  <data name="AlreadyApprovedOrDeclined" xml:space="preserve">
+    <value>Leave has been already approved or declined. Please refresh the page to get updated records.</value>
+  </data>
+  <data name="AlreadyExists" xml:space="preserve">
+    <value>{0} already exists. Please enter different value.</value>
+  </data>
+  <data name="AlreadyExistsAffiliateEmail" xml:space="preserve">
+    <value>Email already exists for selected category. Enter/select different value.</value>
+  </data>
+  <data name="AlreadyExistUsername" xml:space="preserve">
+    <value>Sorry! The username is already taken.</value>
+  </data>
+  <data name="AlreadyImported" xml:space="preserve">
+    <value>{0} already imported. Please upload new file</value>
+  </data>
+  <data name="AlreadyInRunningMode" xml:space="preserve">
+    <value>Task is already in running mode.</value>
+  </data>
+  <data name="AlreadyLoggedIn" xml:space="preserve">
+    <value>You are already logged in.</value>
+  </data>
+  <data name="AlreadyLoggedOut" xml:space="preserve">
+    <value>You are already logged out.</value>
+  </data>
+  <data name="AlreadyUploaded" xml:space="preserve">
+    <value>Doument already uploaded.</value>
+  </data>
+  <data name="AnotherTaskRunning" xml:space="preserve">
+    <value>Another task is alreay in running mode.</value>
+  </data>
+  <data name="AtleastOneRecord" xml:space="preserve">
+    <value>Please enter/select at least one {0}.</value>
+  </data>
+  <data name="BlackListedLicense" xml:space="preserve">
+    <value>{0} is black listed.</value>
+  </data>
+  <data name="CantDoAction" xml:space="preserve">
+    <value>You can't do this action. First do relative check in/check out.</value>
+  </data>
+  <data name="CantEditLeave" xml:space="preserve">
+    <value>You can't edit this leave. Leave has been approved/declined.</value>
+  </data>
+  <data name="CantStartTask" xml:space="preserve">
+    <value>You can't start task due to office timeout.</value>
+  </data>
+  <data name="CombinationExists" xml:space="preserve">
+    <value>{0} combination with this {1} already exists. Try to choose different value.</value>
+  </data>
+  <data name="ConfirmationAlreadyDone" xml:space="preserve">
+    <value>Registration confirmation has been already done.</value>
+  </data>
+  <data name="ConfirmationAlreadyDonePendingWithSystem" xml:space="preserve">
+    <value>Registration confirmation has been already done. Please wait until system administrator approve your registration account.</value>
+  </data>
+  <data name="CustomMessageForExistence" xml:space="preserve">
+    <value>{0} already exists {1}.</value>
+  </data>
+  <data name="DateGreaterthanCurrent" xml:space="preserve">
+    <value>{0} should be greater than current date.</value>
+  </data>
+  <data name="DateNotGreaterthanCurrent" xml:space="preserve">
+    <value>{0}  should not be greater than current date.</value>
+  </data>
+  <data name="Deleted" xml:space="preserve">
+    <value>{0} has been deleted successfully.</value>
+  </data>
+  <data name="DeletedError" xml:space="preserve">
+    <value>Some file(s) not able to deleted due to unexpected error.</value>
+  </data>
+  <data name="DenyDetail" xml:space="preserve">
+    <value>Sorry! You can not view the detail.</value>
+  </data>
+  <data name="DocumentUploadedSuccess" xml:space="preserve">
+    <value>Document has been uploaded successfully.</value>
+  </data>
+  <data name="DoLunchTimeIn" xml:space="preserve">
+    <value>Please do lunch time-in to start the task.</value>
+  </data>
+  <data name="DoOfficeTimeIn" xml:space="preserve">
+    <value>Please do office time-in to start the task.</value>
+  </data>
+  <data name="DoucumentSharedEmailContent" xml:space="preserve">
+    <value>Hello, &lt;br/&gt; {0} shared document with you.</value>
+  </data>
+  <data name="Drop" xml:space="preserve">
+    <value>Sorry! The record has been deleted from the system.</value>
+  </data>
+  <data name="EmailSent" xml:space="preserve">
+    <value>Email has been sent successfully.</value>
+  </data>
+  <data name="EntrySaved" xml:space="preserve">
+    <value>Entry saved successfully.</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Session Has Expired, Please Login Again.</value>
+  </data>
+  <data name="ErrorContactAdmin" xml:space="preserve">
+    <value>Some error occured, please contact administrator.</value>
+  </data>
+  <data name="ErrorWithMessage" xml:space="preserve">
+    <value>Some error occured while {0}.</value>
+  </data>
+  <data name="FieldsRequired" xml:space="preserve">
+    <value>Please enter all required fields.</value>
+  </data>
+  <data name="FileAlreadyExists" xml:space="preserve">
+    <value>{0} already exists.</value>
+  </data>
+  <data name="FileNotAllowed" xml:space="preserve">
+    <value>Invalid file! Please upload valid attachment(s),{0} file extension not allowed.</value>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>File is not available you are trying to download.</value>
+  </data>
+  <data name="FileUploadInvalidLength" xml:space="preserve">
+    <value>Error in file content length.</value>
+  </data>
+  <data name="FileUploadSize" xml:space="preserve">
+    <value>Please upload file less than {0}.</value>
+  </data>
+  <data name="FileUploadWithInvalidExtension" xml:space="preserve">
+    <value>You can only upload file like {0}.</value>
+  </data>
+  <data name="FromDateToDate" xml:space="preserve">
+    <value>From date should be less than or equal to - to date.</value>
+  </data>
+  <data name="GoogleAnalyticsError" xml:space="preserve">
+    <value>Unable to load google analytics report data, please try again after some time.</value>
+  </data>
+  <data name="Imported" xml:space="preserve">
+    <value>{0} imported successfully.</value>
+  </data>
+  <data name="IncorrectUserType" xml:space="preserve">
+    <value>Please select valid user type.</value>
+  </data>
+  <data name="InsertSuccessFully" xml:space="preserve">
+    <value>{0} has been added successfully.</value>
+  </data>
+  <data name="InvalidChars" xml:space="preserve">
+    <value>Folder\file name can't contain any of the following characters: \ / : * ? " &lt; &gt; |</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>Invalid email address.</value>
+  </data>
+  <data name="InvalidFile" xml:space="preserve">
+    <value>Invalid file! Please upload attachment(s) with an extension like {0}.</value>
+  </data>
+  <data name="InvalidFileUpload" xml:space="preserve">
+    <value>File you uploaded is not valid as per selection on form.</value>
+  </data>
+  <data name="InvalidLink" xml:space="preserve">
+    <value>{0} link is invalid.</value>
+  </data>
+  <data name="InvalidModelState" xml:space="preserve">
+    <value>{0} model state is not valid. Please try again</value>
+  </data>
+  <data name="InvalidPhoneNumber" xml:space="preserve">
+    <value>Invalid phone.</value>
+  </data>
+  <data name="InvalidRootFolder" xml:space="preserve">
+    <value>Selcted folder not exists.</value>
+  </data>
+  <data name="InValidWebURL" xml:space="preserve">
+    <value>Invalid web URL.</value>
+  </data>
+  <data name="IsInUse" xml:space="preserve">
+    <value>One or more {0} are in use.</value>
+  </data>
+  <data name="IsInValid" xml:space="preserve">
+    <value>{0} is invalid.</value>
+  </data>
+  <data name="LeaveApprovalPermisson" xml:space="preserve">
+    <value>You do not have permission to approve/decline leave.</value>
+  </data>
+  <data name="LeaveApproved" xml:space="preserve">
+    <value>Leave has been approved successfully.</value>
+  </data>
+  <data name="LeaveDatePassed" xml:space="preserve">
+    <value>Leave date has been passed. You can't approve or decline leave.</value>
+  </data>
+  <data name="LeaveDeclined" xml:space="preserve">
+    <value>Leave has been declined successfully.</value>
+  </data>
+  <data name="LeaveDoesNotExists" xml:space="preserve">
+    <value>Leave has been deleted or does not exitsts.</value>
+  </data>
+  <data name="LessThanOrEqualTo" xml:space="preserve">
+    <value>{0} should be less than or equal to {1}.</value>
+  </data>
+  <data name="MaxAllowedLength" xml:space="preserve">
+    <value>Only {1} characters allowed for {0}.</value>
+  </data>
+  <data name="MaxFileSizeExceeded" xml:space="preserve">
+    <value>Uploaded file(s) must be less than {0} MB.</value>
+  </data>
+  <data name="MinMaxAllowedLength" xml:space="preserve">
+    <value>{0} must be {2} to {1} characters long.</value>
+  </data>
+  <data name="MobileLength" xml:space="preserve">
+    <value>Mobile number should be at least 10 characters long.</value>
+  </data>
+  <data name="NewPasswordCanNotBeSame" xml:space="preserve">
+    <value>New password cannot be same as old password.</value>
+  </data>
+  <data name="NoAddPermission" xml:space="preserve">
+    <value>You don't have permission to add {0}(s)</value>
+  </data>
+  <data name="NoDeletePermission" xml:space="preserve">
+    <value>You don't have permission to delete {0}(s)</value>
+  </data>
+  <data name="NoDownloadPermission" xml:space="preserve">
+    <value>You don't have permission to download {0}(s)</value>
+  </data>
+  <data name="NoEditPermission" xml:space="preserve">
+    <value>You don't have permission to edit {0}(s)</value>
+  </data>
+  <data name="NoEmailSent" xml:space="preserve">
+    <value>{0} has been added successfully. Email was not sent successfully.</value>
+  </data>
+  <data name="NoPrintPermission" xml:space="preserve">
+    <value>You don't have permission to print {0}(s)</value>
+  </data>
+  <data name="NoRecordsFound" xml:space="preserve">
+    <value>No records found</value>
+  </data>
+  <data name="NoRecordtoExport" xml:space="preserve">
+    <value>No records found to export data.</value>
+  </data>
+  <data name="NoSameValues" xml:space="preserve">
+    <value>{0} cannot be same. Try to choose/enter different value.</value>
+  </data>
+  <data name="NotAuthorized" xml:space="preserve">
+    <value>You are not authorized to view requested page.</value>
+  </data>
+  <data name="NotAutorizedAction" xml:space="preserve">
+    <value>You are not authorized to perform this action.</value>
+  </data>
+  <data name="NotEnteredRequiredField" xml:space="preserve">
+    <value>You have not entered/selected any of required field(s).</value>
+  </data>
+  <data name="NotExists" xml:space="preserve">
+    <value>{0} doesn't exists or has been deleted.</value>
+  </data>
+  <data name="NotExistsUser" xml:space="preserve">
+    <value>User doesn't exists.</value>
+  </data>
+  <data name="NotInRunningMode" xml:space="preserve">
+    <value>Task is not in running mode</value>
+  </data>
+  <data name="NotVerifiedBySystem" xml:space="preserve">
+    <value>You are not verified by system, please contact administrator.</value>
+  </data>
+  <data name="NoViewPermission" xml:space="preserve">
+    <value>You don't have permission to view  {0}(s)</value>
+  </data>
+  <data name="NumericRange" xml:space="preserve">
+    <value>{0} must be between {1} to {2}.</value>
+  </data>
+  <data name="OldPasswordDoNotMatch" xml:space="preserve">
+    <value>Old password do not match with our data, enter proper value.</value>
+  </data>
+  <data name="OpenHouseInvalidDate" xml:space="preserve">
+    <value>Proposed date for open house must be 2 weeks later of current date.</value>
+  </data>
+  <data name="OpenTab" xml:space="preserve">
+    <value>You can't open {0} in multiple tabs at the same time.</value>
+  </data>
+  <data name="ParentChildCanNotSame" xml:space="preserve">
+    <value>Department and parent department cannot be same.</value>
+  </data>
+  <data name="PasswordDoNotMatch" xml:space="preserve">
+    <value>'Confirm password' and 'password' do not match.</value>
+  </data>
+  <data name="PhoneLength" xml:space="preserve">
+    <value>{0} should be 10 digit number.</value>
+  </data>
+  <data name="RegistrationComplete" xml:space="preserve">
+    <value>Registration has been completed successfully.</value>
+  </data>
+  <data name="RequiredField" xml:space="preserve">
+    <value>{0} is required.</value>
+  </data>
+  <data name="ResendEmail" xml:space="preserve">
+    <value>Email has been successfully resent to your registered email address.</value>
+  </data>
+  <data name="ResetPasswordMail" xml:space="preserve">
+    <value>Reset password email has been sent to your registered email address.</value>
+  </data>
+  <data name="RoleExistsInUser" xml:space="preserve">
+    <value>Role is in use you can not update it as inactive.</value>
+  </data>
+  <data name="SelectFile" xml:space="preserve">
+    <value>Please select file to upload.</value>
+  </data>
+  <data name="SelectUser" xml:space="preserve">
+    <value>Select at least 1 user.</value>
+  </data>
+  <data name="Session" xml:space="preserve">
+    <value>Session was expired, please make entries again and save the record.</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>{0} status has been changed successfully.</value>
+  </data>
+  <data name="StopTaskFirst" xml:space="preserve">
+    <value>Your task is in running mode. Please stop your task.</value>
+  </data>
+  <data name="SuccessChanged" xml:space="preserve">
+    <value>{0} has been changed successfully.</value>
+  </data>
+  <data name="SuccessLogOut" xml:space="preserve">
+    <value>You have been successfully logged out.</value>
+  </data>
+  <data name="SuccessResetPassword" xml:space="preserve">
+    <value>Password has been reset successfully.</value>
+  </data>
+  <data name="TaskNotExistsOrNoPermission" xml:space="preserve">
+    <value>You doesn't have permission to perform this action or task does not exists.</value>
+  </data>
+  <data name="TaskStartStatus" xml:space="preserve">
+    <value>Please change the status.</value>
+  </data>
+  <data name="TaskStatusNotAllowed" xml:space="preserve">
+    <value>Status {0} not allowed at {1} time.</value>
+  </data>
+  <data name="Updated" xml:space="preserve">
+    <value>{0} has been updated successfully.</value>
+  </data>
+  <data name="WrongEmailPassword" xml:space="preserve">
+    <value>Email or password is wrong.</value>
+  </data>
+  <data name="WrongListingSelected" xml:space="preserve">
+    <value>Sorry! You can't activate selected listing please contact administartor.</value>
+  </data>
+  <data name="WrongUsername" xml:space="preserve">
+    <value>Uername is wrong.</value>
+  </data>
+</root>

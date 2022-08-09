@@ -1,0 +1,82 @@
+﻿@model EducationPortal.Models.tblSpecialization
+
+@{
+    ViewData["Title"] = "SaveSpecialization";
+}
+
+<br />
+@if (TempData["fail"] != null)
+{
+    <div class="alert alert-danger alert-dismmissible text-center">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Error!</strong> @TempData["fail"]
+    </div>
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="page-title-box">
+                @if (ViewBag.spid != null || TempData["fail"] != null)
+                {
+                    <h4 class="page-title">Add Specialization</h4>
+                }
+                else if (ViewBag.spid == null || TempData["fail"] != null)
+                {
+                    <h4 class="page-title">Update Specialization</h4>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <form asp-action="SaveSpecialization">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" hidden>
+                <label asp-for="SpecializationID" class="control-label"></label>
+                <input asp-for="SpecializationID" class="form-control" />
+                <input asp-for="CreatedBy" class="form-control" />
+                <input asp-for="CreatedDate" class="form-control" />
+                <span asp-validation-for="SpecializationID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CourseID" class="control-label"></label>
+                <select asp-for="CourseID" class="form-control" asp-items="ViewBag.Course">
+                    <option value="">
+                        --Select Course--
+                    </option>
+                </select>
+                <span asp-validation-for="CourseID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" maxlength="500" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" checked asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    @if (ViewBag.spid != null || TempData["fail"] != null)
+                    {
+                        <input type="submit" value="Add" class="btn btn-primary" />
+                    }
+                    else if (ViewBag.spid == null || TempData["fail"] != null)
+                    {
+                        <input type="submit" value="Update" class="btn btn-primary" />
+                    }
+                </div>&nbsp;&nbsp;
+                <div class="form-group">
+                    @Html.ActionLink("Back", "Index", "Suggession", null, new { @class = "clsButtonFake btn btn-danger" })
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+

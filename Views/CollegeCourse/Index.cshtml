@@ -1,0 +1,53 @@
+﻿@model EducationPortal.ViewModel.CourseCollegeViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap Dual Listbox</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
+    <link rel="stylesheet" type="text/css" href="../src/bootstrap-duallistbox.css">
+    <link href="~/DualList/dist/bootstrap-duallistbox.min.css" rel="stylesheet" />
+    <link href="~/DualList/dist/bootstrap-duallistbox.css" rel="stylesheet" />
+    <link href="~/DualList/src/bootstrap-duallistbox.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script src="../src/jquery.bootstrap-duallistbox.js"></script>
+    <script src="~/DualList/src/jquery.bootstrap-duallistbox.js"></script>
+    <script src="~/DualList/dist/jquery.bootstrap-duallistbox.min.js"></script>
+    <script src="~/DualList/dist/jquery.bootstrap-duallistbox.js"></script>
+</head>
+<body class="container">
+    <br />
+    @if (TempData["fail"] != null)
+    {
+        <div class="alert alert-danger alert-dismmissible text-center">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Error!</strong> @TempData["fail"]
+        </div>
+    }
+
+    <form  asp-action="Index" method="post">
+        <input type="hidden" asp-for="CollegeId" />
+            <select multiple="multiple" size="@ViewBag.Count" name="duallistbox_demo1[]" asp-items="ViewBag.alls"  asp-for="@Model.CourseId" title="duallistbox_demo1[]">
+                @for (int i = 0; i < ViewBag.Idcount; i++)
+                {
+                    <option  value="@Model.CourseId[i].CourseId" selected>@Model.CourseName[i].Name</option>
+                }
+            </select>
+        <br>
+        <input type="submit" class="btn btn-primary" value="Submit" />
+        @Html.ActionLink("Back", "Index", "College", null, new { @class = "clsButtonFake btn btn-danger" })
+    </form>
+    <script>
+        var demo1 = $('select[name="duallistbox_demo1[]"]').bootstrapDualListbox();
+    </script>
+
+</body>
+</html>
+

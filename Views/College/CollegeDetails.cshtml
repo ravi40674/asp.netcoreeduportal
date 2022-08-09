@@ -1,0 +1,155 @@
+﻿@model EducationPortal.Models.tblCollege
+
+@{
+    ViewData["Title"] = "CollegeDetails";
+}
+
+<div>
+    <h4>University Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StudentsEnrolled)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StudentsEnrolled)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StudentsRating)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StudentsRating)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RatingType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RatingType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Approvals)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Approvals)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pros)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pros)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cons)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cons)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EducationMode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EducationMode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PlacementAssistance)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PlacementAssistance)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Eligibility)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Eligibility)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Collegescore)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Collegescore)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NaacScore)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NaacScore)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NirfRank)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NirfRank)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ELearnings)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ELearnings)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OnlineClasses)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OnlineClasses)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SatisfiedStudents)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SatisfiedStudents)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IndustryReady)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IndustryReady)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Emi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Emi)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.WesApproval)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.WesApproval)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Logo)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/ApplicationDocument/UniversityImages/@Model.Logo" height="100" width="100" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SampleCertificate)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/ApplicationDocument/SampleCertificate/@Model.SampleCertificate" height="100" width="100" />
+        </dd>
+        <dt class="col-sm-2">
+            Status
+        </dt>
+        <dd class="col-sm-10">
+            @(Model.IsActive ? "Active":"Inactive")
+        </dd>
+    </dl>
+</div>
+<div class="row">
+    @Html.ActionLink("Update", "SaveCollege", new { id = Model.CollegeId  }, new { @class = "btn btn-primary" }) &nbsp;
+    @Html.ActionLink("Back", "Index","College",null,new {@class="btn btn-danger" }) 
+</div>

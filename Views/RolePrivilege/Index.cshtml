@@ -1,0 +1,359 @@
+﻿@model EducationPortal.ViewModel.RolePrivilegesViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<form asp-action="Index" asp-controller="RolePrivilege">
+    <div class="page-header">
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    @if (@TempData["Success"] != null)
+                    {
+                        <div class="alert alert-success alert-dismmissible text-center">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Success!</strong> @TempData["Success"]
+                        </div>
+                    }
+                    @if (TempData["Fail"] != null)
+                    {
+                        <div class="alert alert-danger alert-dismmissible text-center">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Error!</strong>  @TempData["Fail"]
+                        </div>
+                    }
+                    <h4 class="card-title">Role Privilege</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form">
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label">Role <span class="mandatory">*</span></label>
+                                        <select asp-for="RoleId" id="ckdesignation" onchange="getdesprev(this.value)" asp-items="ViewBag.Designation" class="form-control">
+                                            <option value="">--Select Role--</option>
+                                        </select>
+                                        <span asp-validation-for="RoleId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (ViewData["RolePrivileges"] != null && Model.RoleId>0)
+                    {
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="">
+                                        <input type="checkbox" name="chkSelectAll" onclick="CheckAll(0)" id="chkSelectAll" class="verticalaligntop" />
+                                        Menu Item
+                                    </th>
+                                    <th>
+                                        <input type="checkbox" name="chkViewAll" onclick="CheckAll(1)" id="chkViewAll" class="chkViewPar11" />
+                                        View
+                                    </th>
+                                    <th>
+                                        <input type="checkbox" name="chkAddAll" onclick="CheckAll(2)" id="chkAddAll" class="chkViewPar11" />
+                                        Add
+                                    </th>
+                                    <th>
+                                        <input type="checkbox" name="chkEditAll" onclick="CheckAll(3)" id="chkEditAll" class="chkViewPar11" />
+                                        Edit
+                                    </th>
+                                    <th>
+                                        <input type="checkbox" name="chkDeleteAll" onclick="CheckAll(4)" id="chkDeleteAll" class="chkViewPar11" />
+                                        Delete
+                                    </th>
+                                    <th>
+                                        <input type="checkbox" name="chkDetailAll" onclick="CheckAll(5)" id="chkDetailAll" class="chkViewPar11" />
+                                        Detail
+                                    </th>
+                                </tr>
+                            </thead>
+                            @{
+                                int j = 0;
+                                System.Data.DataTable dtRolePrivileges = ViewData["RolePrivileges"] as System.Data.DataTable;
+                                for (int i = 0; i < dtRolePrivileges.Rows.Count; i++)
+                                {
+                                    j += 1;
+                                    int ParentId = Convert.ToInt32(dtRolePrivileges.Rows[i]["ParentID"].ToString());
+                                    string MenuItem = Convert.ToString(dtRolePrivileges.Rows[i]["MenuItem"]);
+                                    string MenuItemController = Convert.ToString(dtRolePrivileges.Rows[i]["MenuItemController"]);
+                                    string MenuItemView = Convert.ToString(dtRolePrivileges.Rows[i]["MenuItemView"]);
+                                    string strMenuItemId = Convert.ToString(dtRolePrivileges.Rows[i]["MenuItemID"]);
+                                    int designationid = Convert.ToInt32(dtRolePrivileges.Rows[i]["RoleId"].ToString());
+
+
+                                    <tr class="@(j % 2 == 0 ? "grid-row-alternate" : "grid-row")">
+                                        <td>
+                                            @if (ParentId == 0)
+                                            {
+                                                <input type="text" readonly style="font-weight:bolder;border:0;" value="@Html.Encode((dtRolePrivileges.Rows[i]["MenuItem"].ToString()))" id="m" name="m" />
+                                            }
+                                            else
+                                            {
+                                                <input type="text" readonly style="padding-left: 28px;border:0" value="@Html.Encode((dtRolePrivileges.Rows[i]["MenuItem"].ToString()))" id="m" name="m" />
+                                            }
+                                            <input type="hidden" id="hdMenuItemID" name="hdMenuItemID" value="@Html.Encode((dtRolePrivileges.Rows[i]["MenuItemID"].ToString()))" />
+                                            <input type="hidden" id="hdMenuItemController" name="hdMenuItemController" value="@Html.Encode(MenuItemController)" />
+                                            <input type="hidden" id="hdMenuItemView" name="hdMenuItemView" value="@Html.Encode(MenuItemView)" />
+                                            <input type="hidden" id="hdParentID" name="hdParentID" value="@Html.Encode(ParentId)" />
+                                            <input type="hidden" id="hdsortorder" name="hdsortorder" value="@Html.Encode((dtRolePrivileges.Rows[i]["SortOrder"].ToString()))" />
+                                        </td>
+                                        <td class="tdData">
+                                            @if (ParentId > 0)
+                                            {
+                                                    if (Convert.ToBoolean(dtRolePrivileges.Rows[i]["View"]))
+                                                    {
+                                                        <input type="checkbox" name="chkView" value="@("v" + Html.Encode(strMenuItemId))" class="@("chkView")" id="@("View_" + Html.Encode(Convert.ToString(dtRolePrivileges.Rows[i]["ParentID"])) + "_" + Html.Encode(strMenuItemId))" checked="checked" onclick="onTogglechaek(0)" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" name="chkView" value="@("v" + Html.Encode(strMenuItemId))" class="@("chkView")" id="@("View_" + Html.Encode(Convert.ToString(dtRolePrivileges.Rows[i]["ParentID"])) + "_" + Html.Encode(strMenuItemId))" onclick="onTogglechaek(0)" />
+                                                    }
+                                                    <label>View</label>
+                                                }
+                                        </td>
+                                        <td class="tdData">
+                                            @if (ParentId > 0)
+                                            {
+                                                    if (Convert.ToBoolean(dtRolePrivileges.Rows[i]["Add"]))
+                                                    {
+                                                        <input type="checkbox" name="chkAdd" value="@("a" + Html.Encode(strMenuItemId))" class="@("chkAdd")" id="@("Add_" + Html.Encode(Convert.ToString(dtRolePrivileges.Rows[i]["ParentID"])) + "_" + Html.Encode(strMenuItemId)) " checked="checked" onclick="onTogglechaek(1)" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" name="chkAdd" value="@("a" + Html.Encode(strMenuItemId))" class="@("chkAdd")" id="@("Add_" + Html.Encode(Convert.ToString(dtRolePrivileges.Rows[i]["ParentID"])) + "_" + Html.Encode(strMenuItemId))" onclick="onTogglechaek(1)" />
+                                                    }
+                                                    <label>Add</label>
+                                            }
+
+                                        </td>
+                                        <td class="tdData">
+                                            @if (ParentId > 0)
+                                            {
+                                                    if (Convert.ToBoolean(dtRolePrivileges.Rows[i]["Edit"]))
+                                                    {
+                                                        <input type="checkbox" name="chkEdit" value="@("e" + Html.Encode(strMenuItemId))" class="@("chkEdit")" id="@("Edit_" + Html.Encode(Convert.ToString(dtRolePrivileges.Rows[i]["ParentID"])) + "_" + Html.Encode(strMenuItemId))" checked="checked" onclick="onTogglechaek(2)" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" name="chkEdit" value="@("e" + Html.Encode(strMenuItemId))" class="@("chkEdit")" id="@("Edit_" + Html.Encode(Convert.ToString(dtRolePrivileges.Rows[i]["ParentID"])) + "_" + Html.Encode(strMenuItemId))" onclick="onTogglechaek(2)" />
+                                                    }
+                                                    <label>Edit</label>
+                                            }
+                                        </td>
+                                        <td class="tdData">
+                                            @if (ParentId > 0)
+                                            {
+                                                    if (Convert.ToBoolean(dtRolePrivileges.Rows[i]["Delete"]))
+                                                    {
+                                                        <input type="checkbox" name="chkDelete" value="@("d" + Html.Encode(strMenuItemId))" class="@("chkDelete")" id="@("Delete_" + Html.Encode(Convert.ToString(dtRolePrivileges.Rows[i]["ParentID"])) + "_" + Html.Encode(strMenuItemId))" checked="checked" onclick="onTogglechaek(3)" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" name="chkDelete" value="@("d" + Html.Encode(strMenuItemId))" class="@("chkDelete")" id="@("Delete_" + Html.Encode(Convert.ToString(dtRolePrivileges.Rows[i]["ParentID"])) + "_" + Html.Encode(strMenuItemId))" onclick="onTogglechaek(3)" />
+                                                    }
+                                                    <label>Delete</label>
+                                            }
+                                        </td>
+                                        <td class="tdData">
+                                            @if (ParentId > 0)
+                                            {
+                                                    if (Convert.ToBoolean(dtRolePrivileges.Rows[i]["Detail"]))
+                                                    {
+                                                        <input type="checkbox" name="chkDetail" value="@("de" + Html.Encode(strMenuItemId))" class="@("chkDetail")" id="@("Detail_" + Html.Encode(Convert.ToString(dtRolePrivileges.Rows[i]["ParentID"])) + "_" + Html.Encode(strMenuItemId))" checked="checked" onclick="onTogglechaek(4)" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" name="chkDetail" value="@("de" + Html.Encode(strMenuItemId))" class="@("chkDetail")" id="@("Detail_" + Html.Encode(Convert.ToString(dtRolePrivileges.Rows[i]["ParentID"])) + "_" + Html.Encode(strMenuItemId))" onclick="onTogglechaek(4)" />
+                                                    }
+                                                    <label>Detail</label>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </table>
+                            <div class="form-group">
+                                <input type="submit" name="btnSubmit" id="forms" value="Submit" class="btn btn-primary" />
+                            </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section scripts{
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        function getdesprev(id) {
+                document.forms[0].submit();
+        }
+        function onTogglechaek(s) {
+            if (s==0) {
+                var add = $("input[name='chkAdd']");
+                var edit = $("input[name='chkEdit']");
+                    var delet = $("input[name = 'chkDelete']");
+                var detail=$("input[name = 'chkDetail']");
+                var view = $("input[name='chkView']");
+                if (view.length == view.filter(":checked").length) {
+                    $("#chkViewAll").prop('checked', true)
+                    if (add.length == add.filter(":checked").length && edit.length == edit.filter(":checked").length && delet.length == delet.filter(":checked").length && detail.length == detail.filter(":checked").length) {
+                        $("#chkSelectAll").prop('checked', true)
+                    }
+                }
+                else {
+                    $("#chkViewAll").prop('checked', false)
+                    $("#chkSelectAll").prop('checked', false)
+                }
+            }
+            if (s == 1) {
+                var add = $("input[name='chkAdd']");
+                var edit = $("input[name='chkEdit']");
+                var delet = $("input[name = 'chkDelete']");
+                var detail = $("input[name = 'chkDetail']");
+
+                var view = $("input[name='chkAdd']");
+                if (view.length == view.filter(":checked").length) {
+                    $("#chkAddAll").prop('checked', true)
+                    if (add.length == add.filter(":checked").length && edit.length == edit.filter(":checked").length && delet.length == delet.filter(":checked").length && detail.length == detail.filter(":checked").length) {
+                        $("#chkSelectAll").prop('checked', true)
+                    }
+                }
+                else {
+                    $("#chkAddAll").prop('checked', false)
+                    $("#chkSelectAll").prop('checked', false)
+                }
+            }
+            if (s == 2) {
+                var add = $("input[name='chkAdd']");
+                var edit = $("input[name='chkEdit']");
+                var delet = $("input[name = 'chkDelete']");
+                var detail = $("input[name = 'chkDetail']");
+
+                var view = $("input[name='chkEdit']");
+                if (view.length == view.filter(":checked").length) {
+                    $("#chkEditAll").prop('checked', true)
+                    if (add.length == add.filter(":checked").length && edit.length == edit.filter(":checked").length && delet.length == delet.filter(":checked").length && detail.length == detail.filter(":checked").length) {
+                        $("#chkSelectAll").prop('checked', true)
+                    }
+                }
+                else {
+                    $("#chkEditAll").prop('checked', false)
+                    $("#chkSelectAll").prop('checked', false)
+                }
+            }
+            if (s == 3) {
+                var add = $("input[name='chkAdd']");
+                var edit = $("input[name='chkEdit']");
+                var delet = $("input[name = 'chkDelete']");
+                var detail = $("input[name = 'chkDetail']");
+
+                var view = $("input[name='chkDelete']");
+                if (view.length == view.filter(":checked").length) {
+                    $("#chkDeleteAll").prop('checked', true)
+                    if (add.length == add.filter(":checked").length && edit.length == edit.filter(":checked").length && delet.length == delet.filter(":checked").length && detail.length == detail.filter(":checked").length) {
+                        $("#chkSelectAll").prop('checked', true)
+                    }
+                }
+                else {
+                    $("#chkDeleteAll").prop('checked', false)
+                    $("#chkSelectAll").prop('checked', false)
+                }
+            }
+            if (s == 4) {
+                var add = $("input[name='chkAdd']");
+                var edit = $("input[name='chkEdit']");
+                var delet = $("input[name = 'chkDelete']");
+                var detail = $("input[name = 'chkView']");
+
+                var view = $("input[name='chkDetail']");
+                if (view.length == view.filter(":checked").length) {
+                    $("#chkDetailAll").prop('checked', true)
+                    if (add.length == add.filter(":checked").length && edit.length == edit.filter(":checked").length && delet.length == delet.filter(":checked").length && detail.length == detail.filter(":checked").length) {
+                        $("#chkSelectAll").prop('checked', true)
+                    }
+                }
+                else {
+                    $("#chkDetailAll").prop('checked', false)
+                    $("#chkSelectAll").prop('checked', false)
+                }
+            }
+        }
+
+        function CheckAll(s) {
+            if (s==0) {
+                $("input[type=checkbox]").prop('checked', $("#chkSelectAll").is(":checked"));
+            }
+            if (s==1) {
+                $("input[name='chkView']").prop('checked', $("#chkViewAll").is(":checked"));
+            }
+            if (s==2) {
+                $("input[name='chkAdd']").prop('checked', $("#chkAddAll").is(":checked"));
+            }
+            if (s==3) {
+                $("input[name='chkEdit']").prop('checked', $("#chkEditAll").is(":checked"));
+            }
+            if (s==4) {
+                $("input[name='chkDelete']").prop('checked', $("#chkDeleteAll").is(":checked"));
+            }
+            if (s==5) {
+                $("input[name='chkDetail']").prop('checked', $("#chkDetailAll").is(":checked"));
+            }
+        }
+        $(document).ready(function () {
+            var view = $("input[name='chkView']");
+            var add = $("input[name='chkAdd']");
+            var edit = $("input[name='chkEdit']");
+            var del = $("input[name='chkDelete']");
+            var details = $("input[name='chkDetail']");
+            var approval = $("input[name='chkApproval']");
+            if (view.length == view.filter(":checked").length)
+                $("#chkViewAll").prop('checked', true)
+            if (add.length == add.filter(":checked").length)
+                $("#chkAddAll").prop('checked', true);
+            if (edit.length == edit.filter(":checked").length)
+                $("#chkEditAll").prop('checked', true);
+            if (del.length == del.filter(":checked").length)
+                $("#chkDeleteAll").prop('checked', true);
+            if (details.length == details.filter(":checked").length)
+            setTimeout(function () {
+                if ((view.length == view.filter(":checked").length) && (add.length == add.filter(":checked").length) && (edit.length == edit.filter(":checked").length) && (del.length == del.filter(":checked").length) && (details.length == details.filter(":checked").length)) {
+                    $("INPUT[name='chkSelectAll']").prop('checked', true);
+                    $("INPUT[name='chkMain']").prop('checked', true);
+                    $("INPUT[name='chkSubMain']").prop('checked', true);
+                    $("INPUT[name='chkAll']").prop('checked', true);
+                    $("#chkViewAll").prop('checked', true);
+                    $("#chkAddAll").prop('checked', true);
+                    $("#chkEditAll").prop('checked', true);
+                    $("#chkDeleteAll").prop('checked', true);
+                    $("#chkDetailAll").prop('checked', true);
+                }
+                else {
+                    $("INPUT[name='chkSelectAll']").prop('checked', false);
+                    $("INPUT[name='chkMain']").prop('checked', false);
+                    $("INPUT[name='chkSubMain']").prop('checked', false);
+                    $("INPUT[name='chkAll']").prop('checked', false);
+                    $("#chkViewAll").prop('checked', false);
+                    $("#chkAddAll").prop('checked', false);
+                    $("#chkEditAll").prop('checked', false);
+                    $("#chkDeleteAll").prop('checked', false);
+                    $("#chkDetailAll").prop('checked', false);
+                }
+            }, 100);
+            $("#chkSelectAll")
+        });
+    </script>
+}

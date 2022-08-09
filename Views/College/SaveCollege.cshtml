@@ -1,0 +1,353 @@
+﻿@model EducationPortal.ViewModel.CollegeViewModel
+
+@{
+    ViewData["Title"] = "SaveCollege";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section style{
+    <style>
+        img {
+            height: 100px;
+              width: 100px;
+       }
+        .closeDiv {
+            width: 20px;
+            height: 21px;
+            background-color: rgb(35, 179, 119);
+            cursor: pointer;
+            color: white;
+            box-shadow: 2px 2px 7px rgb(74, 72, 72);
+            text-align: center;
+            margin: 5px;
+            right: 0px;
+        }
+        .closeDiv1 {
+            width: 20px;
+            height: 21px;
+            background-color: rgb(35, 179, 119);
+            cursor: pointer;
+            color: white;
+            box-shadow: 2px 2px 7px rgb(74, 72, 72);
+            text-align: center;
+            margin: 5px;
+            right: 0px;
+        }
+
+        .pDiv {
+            width: 100%
+        }
+
+        .divThumbnail {
+        }
+    </style>
+}
+
+<br />
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success alert-dismmissible text-center">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> @TempData["success"]
+    </div>
+}
+@if (TempData["fail"] != null)
+{
+    <div class="alert alert-danger alert-dismmissible text-center">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Error!</strong> @TempData["fail"]
+    </div>
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="page-title-box">
+                <h4 class="page-title">@(Model.CollegeId==0 ? "Add":"Update") University</h4>
+            </div>
+        </div>
+    </div>
+    <div>
+        <form asp-action="SaveCollege" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-6">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group" hidden>
+                        <label asp-for="CollegeId" class="control-label"></label>
+                        <input asp-for="CollegeId" class="form-control" />
+                        <span asp-validation-for="CollegeId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" tabindex="1" maxlength="100" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Rating" class="control-label"></label>
+                        <input asp-for="Rating" tabindex="3"   id="rating" class="form-control" />
+                        <span asp-validation-for="Rating"  class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RatingType" class="control-label"></label>
+                        <input asp-for="RatingType" tabindex="5" maxlength="500" class="form-control" />
+                        <span asp-validation-for="RatingType" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StudentsEnrolled" class="control-label"></label>
+                        <input asp-for="StudentsEnrolled" tabindex="7" maxlength="10"  class="form-control" />
+                        <span asp-validation-for="StudentsEnrolled" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StudentsRating" class="control-label"></label>
+                        <input asp-for="StudentsRating"  tabindex="9" maxlength="3"  class="form-control" />
+                        <span asp-validation-for="StudentsRating" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Approvals" class="control-label"></label>
+                        <input asp-for="Approvals" tabindex="11" maxlength="100" class="form-control" />
+                        <span asp-validation-for="Approvals" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Pros" class="control-label"></label>
+                        <input asp-for="Pros" tabindex="13" maxlength="100" class="form-control" />
+                        <span asp-validation-for="Pros" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Cons" class="control-label"></label>
+                        <input asp-for="Cons" tabindex="15" maxlength="100" class="form-control" />
+                        <span asp-validation-for="Cons" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EducationMode" class="control-label"></label>
+                        <input asp-for="EducationMode" tabindex="17" maxlength="100" class="form-control" />
+                        <span asp-validation-for="EducationMode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PlacementAssistance" class="control-label"></label>
+                        <input asp-for="PlacementAssistance"   tabindex="19"  maxlength="10" class="form-control" />
+                        <span asp-validation-for="PlacementAssistance" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Logo" class="control-label"></label>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="imgurl" />
+                        <div id="thumbnail">
+                            <div class="divThumbnail">
+                                @if (!string.IsNullOrEmpty(Model.imgurl))
+                                {
+                                    <img src="~/ApplicationDocument/UniversityImages/@Model.imgurl" class="imgs" />
+                                    <div class="closeDiv" style="float: left;">X</div>
+                                }
+                            </div>
+                        </div>
+                        <input asp-for="Logo" accept="Image/*" id="upload-file" class="form-control" />
+                        <span asp-validation-for="Logo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" checked asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                        </label>
+                    </div>
+
+                    <div class="row">
+                        &nbsp;&nbsp;
+                        <div class="form-group">
+                            <input type="submit" tabindex="21" value="@(Model.CollegeId==0 ? "Add":"Update")" class="btn btn-primary" />
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            @Html.ActionLink("Back", "Index", "College", null, new { @class = "clsButtonFake btn btn-danger",@tabindex="22" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Eligibility" class="control-label"></label>
+                        <input asp-for="Eligibility" tabindex="2" maxlength="100" class="form-control" />
+                        <span asp-validation-for="Eligibility" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Collegescore" class="control-label"></label>
+                        <input asp-for="Collegescore" tabindex="4" maxlength="4"  class="form-control" />
+                        <span asp-validation-for="Collegescore" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NaacScore" class="control-label"></label>
+                        <input asp-for="NaacScore"  tabindex="6" maxlength="4" class="form-control" />
+                        <span asp-validation-for="NaacScore" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NirfRank" class="control-label"></label>
+                        <input asp-for="NirfRank" tabindex="8" maxlength="100" class="form-control" />
+                        <span asp-validation-for="NirfRank" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ELearnings" class="control-label"></label>
+                        <select asp-for="ELearnings" tabindex="10" class="form-control">
+                            <option value="">--Select--</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        <span asp-validation-for="ELearnings" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OnlineClasses" class="control-label"></label>
+                        <select asp-for="OnlineClasses" tabindex="12" class="form-control">
+                            <option value="">--Select--</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        <span asp-validation-for="OnlineClasses" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SatisfiedStudents" class="control-label"></label>
+                        <input asp-for="SatisfiedStudents"   tabindex="14" maxlength="10" class="form-control" />
+                        <span asp-validation-for="SatisfiedStudents" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IndustryReady" class="control-label"></label>
+                        <select asp-for="IndustryReady" tabindex="16" class="form-control">
+                            <option value="">--Select--</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        <span asp-validation-for="IndustryReady" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Emi" class="control-label"></label>
+                        <select asp-for="Emi" tabindex="18" class="form-control">
+                            <option value="">--Select--</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        <span asp-validation-for="Emi" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="WesApproval" class="control-label"></label>
+                        <select asp-for="WesApproval" tabindex="20" class="form-control">
+                            <option value="">--Select--</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+\                        </select>
+                        <span asp-validation-for="WesApproval" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SampleCertificate" class="control-label"></label>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="imgurl2" />
+                        <div id="thumbnail2">
+                            <div class="divThumbnail2">
+                                @if (!string.IsNullOrEmpty(Model.imgurl2))
+                                {
+                                    <img src="~/ApplicationDocument/SampleCertificate/@Model.imgurl2" class="imgs" />
+                                    <div class="closeDiv1" style="float: left;">X</div>
+                                }
+                            </div>
+                        </div>
+                        <input asp-for="SampleCertificate" accept="Image/*" id="upload-file2" class="form-control" />
+                        <span asp-validation-for="SampleCertificate" class="text-danger"></span>
+                    </div>
+                </div>
+                </div>
+</form>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        jQuery(function ($) {
+            @if (!string.IsNullOrEmpty(Model.imgurl)) {
+                @:$("#upload-file").hide();
+            }
+            @if (!string.IsNullOrEmpty(Model.imgurl2)) {
+                @:$("#upload-file2").hide();
+            }
+            $('div').on('click', '.closeDiv', function () {
+                $(this).prev().remove();
+                $(this).remove();
+                $("#upload-file").show();
+            });
+            $('div').on('click', '.closeDiv1', function () {
+                $(this).prev().remove();
+                $(this).remove();
+                $("#upload-file2").show();
+            });
+
+            var fileInput = document.getElementById("upload-file");
+            var fileInput2 = document.getElementById("upload-file2");
+
+            fileInput.addEventListener("change", function (e) {
+
+                var filesVAR = this.files;
+
+                $('#thumbnail').html("");
+                showThumbnail(filesVAR);
+            }, false);
+            function showThumbnail(files) {
+                var file = files[0]
+
+                var $thumbnail = $('#thumbnail').get(0);
+
+                var $image = $("<img> ", {
+                    class: "imgThumbnail"
+                });
+                var $pDiv = $("<div>", {
+                    class: "divThumbnail",
+                    style: "float: left"
+                });
+                var $div = $("<div>", {
+                    class: "closeDiv",
+                    style: "float: right"
+                }).html('X');
+
+                $pDiv.append($image, $div).appendTo($thumbnail);
+                var reader = new FileReader()
+                reader.onload = function (e) {
+                    $image[0].src = e.target.result;
+                }
+                var ret = reader.readAsDataURL(file);
+                var canvas = document.createElement("canvas");
+                ctx = canvas.getContext("2d");
+                $image.on('load', function () {
+                    ctx.drawImage($image[0], 100, 100);
+                })
+            }
+
+            fileInput2.addEventListener("change", function (e) {
+                var filesVAR = this.files;
+                $('#thumbnail2').html("");
+                showThumbnail2(filesVAR);
+            }, false);
+            function showThumbnail2(files) {
+                var file = files[0]
+                var $thumbnail = $('#thumbnail2').get(0);
+                var $image = $("<img> ", {
+                    class: "imgThumbnail"
+                });
+                var $pDiv = $("<div>", {
+                    class: "divThumbnail2",
+                    style: "float: left"
+                });
+                var $div = $("<div>", {
+                    class: "closeDiv1",
+                    style: "float: right"
+                }).html('X');
+                $pDiv.append($image, $div).appendTo($thumbnail);
+                var reader = new FileReader()
+                reader.onload = function (e) {
+                    $image[0].src = e.target.result;
+                }
+                var ret = reader.readAsDataURL(file);
+                var canvas = document.createElement("canvas");
+                ctx = canvas.getContext("2d");
+                $image.on('load', function () {
+                    ctx.drawImage($image[0], 100, 100);
+                })
+            }
+        });
+    </script>
+}
+

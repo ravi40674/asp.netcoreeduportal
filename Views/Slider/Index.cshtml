@@ -1,0 +1,105 @@
+﻿@model EducationPortal.ViewModel.SliderViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section style{
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.1.219/styles/kendo.default-v2.min.css" />
+    <link href="~/css/jquery-confirm.min.css" rel="stylesheet" />
+}
+
+@{
+    System.Data.DataTable dtRolePrivileges = ViewData["RolePrivileges"] as System.Data.DataTable;
+}
+
+<div class="page-header">
+    <div class="row">
+
+        <div class="col-sm-12">
+            <br />
+            @if (TempData["success"] != null)
+            {
+                <div class="alert alert-success alert-dismmissible text-center">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Success!</strong> @TempData["success"]
+                </div>
+            }<br />
+            <h3 class="page-title">Slider List</h3>
+        </div>
+    </div>
+</div>
+<div class="card m-b-30">
+    <div class="card-body">
+        <div id="UserGrid"></div>
+    </div>
+
+</div>
+@section scripts{
+    <script src="https://kendo.cdn.telerik.com/2020.1.219/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.1.219/js/kendo.all.min.js"></script>
+    <script src="~/js/jquery-confirm.min.js"></script>
+    <script src="~/js/common.js"></script>
+    <script src="~/js/SiteUrl.js"></script>
+    <script type="text/javascript">
+          $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: "@Url.Content("~/Slider/_AjaxBindingSlider")",
+                success: function (result) {
+                    loadGrid(result);
+                },
+                error: function (req, status, error) {
+                    alert(error);
+                }
+            });
+          });
+
+        function loadGrid(results) {
+            $("#UserGrid").kendoGrid({
+                dataSource: {
+                    data: results,
+                    cache: false,
+                    schema: {
+                        model: {
+                            sliderID: "sliderID",
+                            fields: {
+                                RoleName: {
+                                    type: "string"
+                                }
+                            },
+                        }
+                    },
+                    pageSize: 10
+                },
+                editable: false,
+                selectable: true,
+                pageable: { refresh: true },
+                groupable: true,
+                sortable: true,
+                filterable: true,
+                    columns: [
+                        { field: "imgurl", title: "Slider Image", template: '<img src = "Images/#=imgurl#"  width="100" height="100"/>' },
+                        { field: "pageName", title: "Page Name" },
+                        { field: "title", title: "Page Title" },
+                        { field: "description", title: "Page Description" },
+
+                            {
+                                title: '@Convert.ToBoolean(dtRolePrivileges.Rows[11]["Edit"])' == 'True' ? 'Edit':'',
+                                template: '@Convert.ToBoolean(dtRolePrivileges.Rows[11]["Edit"])' == 'True' ? '<a href="/Slider/SaveSlider?id=#=sliderID#"><img src="image/image-icon/edit.png" /></a>':'',
+                            width: 100
+                            },
+                            {
+                                title: '@Convert.ToBoolean(dtRolePrivileges.Rows[11]["Detail"])' == 'True' ? 'Detail':'',
+                                template: '@Convert.ToBoolean(dtRolePrivileges.Rows[11]["Detail"])' == 'True' ? '<a href="/Slider/SliderDetails?id=#=sliderID#"><img src="image/image-icon/info.png" /></a>':'',
+                            width: 100
+                            },
+                    ],
+                editable: false
+            });
+        }
+
+    </script>
+}
+
+

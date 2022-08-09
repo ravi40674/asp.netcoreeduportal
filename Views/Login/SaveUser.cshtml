@@ -1,0 +1,107 @@
+﻿@model EducationPortal.ViewModel.UserViewModel
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success alert-dismmissible text-center">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> @TempData["success"]
+    </div>
+}
+@if (TempData["fail"] != null)
+{
+    <div class="alert alert-danger alert-dismmissible text-center">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Error!</strong> @TempData["fail"]
+    </div>
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <h4 class="page-title text-center">@(Model.UserID==0 ? "Add":"Update") User</h4>
+            </div>
+        </div>
+    </div>
+    <div>
+        <form asp-action="SaveUser">
+            <div class="row">
+                <div class="col-md-6">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group" hidden>
+                        <label asp-for="UserID" class="control-label"></label>
+                        <input asp-for="UserID" maxlength="20" minlength="3" class="form-control" />
+                        <input asp-for="CreatedDate"  class="form-control" />
+                        <input asp-for="CreatedBy"  class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="control-label"></label>
+                        <input asp-for="FirstName" maxlength="45" minlength="3" tabindex="1" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" maxlength="15" minlength="8" tabindex="3" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" maxlength="30" tabindex="5" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" maxlength="500" tabindex="7" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" checked asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                        </label>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                                <input type="submit" value="@(Model.UserID==0 ? "Add":"Update")" tabindex="8" class="btn btn-primary" />
+                        </div>&nbsp;
+                        <div class="form-group">
+                            @Html.ActionLink("Back", "Index", "User", null, new { @class = "clsButtonFake btn btn-danger" })
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="LastName" class="control-label"></label>
+                        <input asp-for="LastName" tabindex="2" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MobileNumber" class="control-label"></label>
+                        <input asp-for="MobileNumber" maxlength="10" minlength="10" tabindex="4" class="form-control" />
+                        <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="RoleID" class="control-label"></label>
+                        <select asp-for="RoleID" asp-items="Model.SelectRole" tabindex="6" class="form-control">
+                            <option value="">--Select Role--</option>
+                        </select>
+                        <span asp-validation-for="RoleID" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+

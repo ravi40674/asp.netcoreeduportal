@@ -1,0 +1,158 @@
+﻿@model EducationPortal.Models.tblEmailSendHistory
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section style{
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.1.219/styles/kendo.default-v2.min.css" />
+    <link href="~/css/jquery-confirm.min.css" rel="stylesheet" />
+}
+@{
+    System.Data.DataTable dtRolePrivileges = ViewData["RolePrivileges"] as System.Data.DataTable;
+}
+
+<div class="page-header">
+    <div class="row">
+
+        <div class="col-sm-12">
+            <br />
+            @if (TempData["success"] != null)
+            {
+                <div class="alert alert-success alert-dismmissible text-center">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Success!</strong> @TempData["success"]
+                </div>
+            }<br />
+            <h3 class="page-title">Email Send History List</h3>
+            @if (Convert.ToBoolean(dtRolePrivileges.Rows[8]["Add"]))
+            {
+                <a asp-action="Save" asp-controller="EmailSend" style="margin-bottom:20px;" class="btn btn-primary add-new"><i class="fa fa-plus"></i>  Add New</a>
+            }
+        </div>
+    </div>
+</div>
+<div class="card m-b-30">
+    <div class="card-body">
+        <div id="UserGrid"></div>
+    </div>
+
+</div>
+@if (Convert.ToBoolean(dtRolePrivileges.Rows[8]["Delete"]))
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-secondary" title="Delete" onclick="return Check_CheckBox_Count('emailSendHistoryID');"><i class="fa fa-trash"></i> Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section scripts{
+    <script src="https://kendo.cdn.telerik.com/2020.1.219/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.1.219/js/kendo.all.min.js"></script>
+    <script src="~/js/jquery-confirm.min.js"></script>
+    <script src="~/js/common.js"></script>
+    <script src="~/js/SiteUrl.js"></script>
+    <script type="text/javascript">
+          $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: "@Url.Content("~/EmailSend/_AjaxBinding")",
+                success: function (result) {
+                    loadGrid(result);
+                },
+                error: function (req, status, error) {
+                    alert(error);
+                }
+            });
+          });
+
+        function loadGrid(results) {
+            $("#UserGrid").kendoGrid({
+                dataSource: {
+                    data: results,
+                    cache: false,
+                    schema: {
+                        model: {
+                            emailSendHistoryID: "emailSendHistoryID",
+                            fields: {
+                                RoleName: {
+                                    type: "string"
+                                }
+                            },
+                        }
+                    },
+                    pageSize: 10
+                },
+                editable: false,
+                selectable: true,
+                pageable: { refresh: true },
+                groupable: true,
+                sortable: true,
+                filterable: true,
+                    columns: [
+                        {
+                            title:"Delete",
+                            width: 50,
+                            headerTemplate:'@Convert.ToBoolean(dtRolePrivileges.Rows[8]["Delete"])' == 'True' ? "<input type='checkbox' id='allCheckBox' name='allCheckBox' title='check all records' class='regular-checkbox' onclick='return initializeAllCheckBox();'/>":'',
+                            template: '@Convert.ToBoolean(dtRolePrivileges.Rows[8]["Delete"])' == 'True' ? "<input class='singleCheckBox' name='chkDelete' id='#= emailSendHistoryID#' type='checkbox' value='#=emailSendHistoryID#' onclick='return initializeSingleCheckBox(this);'/>":''
+                        },
+                        { field: "templateID", title: "Template Name" },
+
+                            {
+                                title: '@Convert.ToBoolean(dtRolePrivileges.Rows[8]["Detail"])' == 'True' ? 'Detail':'',
+                                template: '@Convert.ToBoolean(dtRolePrivileges.Rows[8]["Detail"])' == 'True' ? '<a href="/EmailSend/Details?id=#=emailSendHistoryID#"><img src="image/image-icon/info.png" /></a>':'',
+                                width: 100
+                            },
+                    ],
+                editable: false
+            });
+        }
+
+        function Check_CheckBox_Count(deleteName) {
+
+            var b = $('input[name=chkDelete]');
+            var selectval = b.filter(':checked').length;
+            var SiteBaseUrl = SiteUrl + "EmailSend/Delete";
+
+            if (selectval > 0) {
+                $.confirm({
+                    title: 'Alert!',
+                    content: 'Are you sure? Do you want to delete record(s)?',
+                    type: 'red',
+                    icon: 'fa fa-warning',
+                    buttons: {
+                        confirm: function () {
+                            checks = [];
+                            $("input[name=chkDelete]:checkbox").each(function () {
+                                if (this.checked) {
+                                    checks.push(this.value);
+                                }
+                            });
+                            $.post(SiteBaseUrl, { emailSendHistoryID: checks }, function (result) {
+                                if (result) {
+                                    window.location.reload();
+                                }
+                                else {
+                                    alert("Something Went Wrong!");
+                                }
+                            });
+                        },
+                        cancel: function () {
+                            return;
+                        }
+                    }
+                });
+                console.log(emailSendHistoryID);
+            }
+            else {
+                alert("Please select at least one checkbox to delete.");
+                return false;
+            }
+        }
+    </script>
+}
+
+

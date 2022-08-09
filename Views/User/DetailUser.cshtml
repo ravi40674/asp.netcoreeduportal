@@ -1,0 +1,58 @@
+﻿@model EducationPortal.Models.tblUser
+
+@{
+    ViewData["Title"] = "DetailUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <h4>User Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MobileNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class="col-sm-2">
+Status        </dt>
+        <dd class="col-sm-10">
+            @(Model.IsActive ? "Active":"Inactive")
+        </dd>
+    </dl>
+</div>
+
+    <div class="row">
+        <div class="form-group">
+            @Html.ActionLink("Update", "SaveUser", "Login", new { id = Model.UserID },new{ @class = "btn btn-primary" })
+        </div>&nbsp;
+        <div class="form-group">
+            @Html.ActionLink("Back", "Index", "User", null, new { @class = "clsButtonFake btn btn-danger" })
+        </div>
+    </div>

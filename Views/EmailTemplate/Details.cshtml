@@ -1,0 +1,41 @@
+﻿@model EducationPortal.Models.tblTemplate
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div>
+    <h4>Template Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TemplateID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TemplateID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.Raw(Model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd class = "col-sm-10">
+            @(Model.IsActive ? "Active":"Inactive")
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Update", "Save", "EmailTemplate", new { id = Model.TemplateID }, new { @class = "btn btn-primary" }) &nbsp;
+    @Html.ActionLink("Back", "Index", "EmailTemplate", null, new { @class = "clsButtonFake btn btn-danger" })
+</div>

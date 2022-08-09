@@ -1,0 +1,433 @@
+@media screen and (max-width: 1024px){
+    .site-navbar .site-navigation .site-menu>li>a{
+        font-size: 10px;
+    }
+    .sticky-wrapper.is-sticky .site-navbar .site-navigation .site-menu>li>a{
+        font-size: 10px;        
+    }
+    .suggest-me-uni-btn{
+        font-size: 10px;
+    }
+    .make-parents{
+        padding: 15px;
+        min-height: 244px;
+    }
+    .tel-orange{
+        padding: 15px;
+    }
+    #progressbar li:after{
+        width: 39px;
+        left: -38px;
+    }
+    .span-degree{
+        font-size: 12px !important;
+    }
+    .new-opt{
+        width: 153px !important;
+    }
+    .two-compare-uni-images{
+        max-width: 100%;
+    }
+    .versis-vs{
+        top: 55px;
+        left: 126px;
+    }
+    .fees-all-box{
+        padding: 10px;
+    }
+    .fees-all-box ul li{
+        font-size: 14px;
+    }
+    .big-btn-1024{
+        padding: 15px 19px;
+    font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .site-mobile-menu .site-nav-wrap>li>a{
+        font-size: 13px;
+    }
+    .site-mobile-menu .site-nav-wrap>li>ul>li>a{
+        font-size: 13px;
+    }
+    .site-mobile-menu .site-nav-wrap>li>ul>li>ul>li>a{
+        font-size: 13px;
+    }
+    .slide-content h2{
+        font-size: 50px;
+    }
+    .nav-pills .nav-link{
+        padding: 13px 20px;
+    }
+    .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+        padding: 13px 20px;
+    }
+    .degree-icon{
+        width: 30px;
+    }
+    .degree-main h6{
+        font-size: 13px;
+    }
+    .tel-orange {
+        min-height: 169px;
+    }
+    .tel-orange h6{
+        font-size: 13px;
+    }
+    .date-blog h6{
+        font-size: 13px;
+    }
+    .date-blog p{
+        font-size: 13px;
+    }
+    .scribe-btn{
+        padding: 10px 10px;
+    }
+    .management-content{
+        margin-top: 15px;
+    }
+    #progressbar li:after {
+        width: 62px;
+        left: -62px;
+    }
+    .span-degree {
+        font-size: 15px !important;
+    }
+    .center-fees-box{
+        display: inline-grid;
+        align-items: center;
+    }
+    .gallery-certi{
+        margin-top: 20px;
+    }
+    .top-bottom-spaces {
+        margin-top: 15px;
+    }
+    .versis-vs {
+        top: 60px;
+        left: 140px;
+    }
+    .mobile-border-botom th {
+        width: 175px;
+    }
+    .compare-tabel-top-space{
+        top: 60px;
+        position: relative;
+    }
+    .mobile-compare-tabel {
+        display: block;
+       
+    }
+    .mobile-res-compare {
+        display: flex;
+    }
+    .mobile-tbody-res {
+        display: flex;
+        position: relative;
+        overflow-x: auto;
+        overflow-y: hidden;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .mobile-border-botom th,td {
+        display: block;
+        font-size: 13px;
+    }
+    .numeric {
+        text-align: left;
+    }
+    .text {
+        text-align: left;
+    }
+    .compare-box-parent{
+        display: none;
+    }
+    .mobile-view-hide{
+        display: none;
+    }
+    .comparsion-summry-heading{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .comparsion-summry-heading h2{
+        font-size: 25px;
+        font-weight: 700;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .homesection-first{
+        height: 460px;
+    }
+    .first-sect{
+        margin-right: 0px;
+    }
+    .slide-content h2 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .slide-content p{
+        font-size: 15px;
+    }
+    .know-btn{
+        padding: 10px 25px;
+        font-size: 15px;
+    }
+    .tab-section{
+        padding: 15px;
+    }
+    .nav-pills .nav-link{
+        padding: 13px 7px;
+        font-size: 13px;
+        margin-right: 5px;
+    }
+    .nav-pills .nav-link{
+        padding: 13px 10px;
+    }
+    .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+        padding: 13px 10px;
+    }
+    .tel-orange{
+        margin-bottom: 10px;
+    }
+    .com-ser {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .heading-parents p{
+        padding: 0px 15px;
+    }
+    .testimo-content {
+        padding: 0px 15px;
+    }
+    .slick-prev {
+        left: 0px;
+    }
+    .slick-next {
+        right: 0px;
+    }
+    .blog-post-parents img{
+        width: 100%;
+    }
+    .blog-post-parents{
+        margin-bottom: 15px;
+    }
+    .news-parents{
+        display: block;
+        text-align: center;
+    }
+    .news-content{
+        margin-bottom: 15px;
+    }
+    .custom-new-group {
+        width: 394px;
+    }
+    .management-content{
+        text-align: center;
+        padding: 10px;
+    }
+    .res-input-bottom{
+        margin-bottom: 16px;
+    }
+    .form-compare-sugges{
+        top: 70px;
+    }
+    #progressbar li:after {
+        width: 20px;
+        left: -19px;
+    }
+    .new-btn-siquence{
+        display: inline-block;
+        justify-content: space-between;
+        flex-wrap: inherit;
+        margin-bottom: 0px;
+    }
+    .last-degree-set{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .span-degree {
+        font-size: 12px !important;
+    }
+    .new-opt {
+        margin-bottom: 7px !important;
+    }
+    .page-header{
+        padding-top: 120px;
+    }
+    .header-heading {
+        font-size: 40px;
+        line-height: 50px;
+    }
+    .logo-and-rating{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .collage-description {
+        margin-top: 20px;
+    }
+    .tall-call-set{
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .versis-vs{
+        left: 166px;
+    }
+    .oranges-content{
+        padding: 20px 0px;
+    }
+    .mobile-border-botom th{
+        width: 175px;
+    }
+    .text{
+        width: 170px;
+        font-weight: 600;
+    }
+
+}
+@media screen and (max-width: 375px){
+    .custom-new-group {
+        width: 344px;
+    }
+    .what-space {
+        padding: 15px;
+    }
+    .tab-section {
+        padding: 15px;
+    }
+    .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+        padding: 13px 11px;
+    }
+    .nav-pills .nav-link {
+        padding: 13px 11px;
+        font-size: 10px;
+    }
+    .content-man-parents table tr th{
+        font-size: 13px;
+    }
+    .content-man-parents table tr td{
+        font-size: 13px;
+    }
+    .res-manage-icon-btn{
+        margin-bottom: 16px;
+    }
+    .stap-heading {
+        font-size: 15px;
+    }
+    .form-compare-sugges {
+        top: 35px;
+    }
+    #progressbar li:after {
+        width: 13px;
+        left: -12px;
+    }
+    .new-opt {
+        width: 140px !important;
+    }
+    .last-degree-set{
+        display: block;
+    }
+    .last-res-width{
+        width: 100% !important;
+    }
+    .how-many-studay{
+        font-size: 12px !important;
+    }
+    .persan-rating {
+        display: block;
+        justify-content: center;
+        text-align: center;
+        margin-top: 15px;
+    }
+    .page-header {
+        padding-top: 100px;
+        height: 210px;
+    }
+    .header-heading {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .versis-vs {
+        left: 145px;
+    }
+}
+@media screen and (max-width: 320px){
+    .site-navbar .site-logo a{
+        font-size: 17px;
+    }
+    .custom-new-group {
+        width: 290px;
+    }
+    .compare-features p {
+        font-size: 13px;
+        color: #ffffff;
+    }
+    .nav-pills .nav-link {
+        padding: 0;
+        font-size: 11px;
+        border: 0;
+        margin-right: 8px;
+    }
+    .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+        padding: 0;
+        background: none;
+        color: #fd5f00;
+        border: 0;
+    }   
+    .what-space h3{
+        font-size: 18px;
+    }
+    p{
+        font-size: 13px;
+    }
+    .heading-parents h2 {
+        font-size: 25px;
+        font-weight: 700;
+    }
+    .card-header .title{
+        font-size: 13px;
+    }
+    .card-body{
+        font-size: 13px;
+    }
+    .madeby-themes{
+        font-size: 14px;
+    }
+    .responsive-tabel-edu{
+        overflow-x: auto;
+    }
+    #progressbar li:after {
+        width: 7px;
+        left: -5px;
+    }
+    .stap-heading {
+        font-size: 13px;
+    }
+    .new-opt {
+        width: 112px !important;
+    }
+    .last-degree-set{
+        display: block;
+    }
+    .last-res-width{
+        width: 100% !important;
+    }
+    .versis-vs {
+        left: 113px;
+        top: 50px;
+    }
+    .mobile-border-botom th, td {
+        font-size: 10px;
+    }
+    .mobile-border-botom th {
+        width: 135px;
+    }
+.kevalam-btn-40{
+        margin-top: 10px;
+        width: 100%;
+    }
+}

@@ -1,0 +1,16 @@
+﻿body {
+}
+.main-sub-btn{
+    margin: 25px 0px 0px;
+    text-align: right;
+}
+.box-add-top{
+    margin:20px 0px;
+}
+.new-table-add-icon{
+    padding: 0.375rem 0rem !important;
+    font-size: 19px !important;
+    width: 30px !important;
+    height: 30px !important;
+    padding-top: 1px !important;
+}

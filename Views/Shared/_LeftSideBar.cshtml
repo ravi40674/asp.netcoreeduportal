@@ -1,0 +1,170 @@
+﻿<div class="left side-menu">
+    <button type="button" class="button-menu-mobile button-menu-mobile-topbar open-left waves-effect">
+        <i class="ion-close"></i>
+    </button>
+    @{
+        System.Data.DataTable dtRolePrivileges = ViewData["RolePrivileges"] as System.Data.DataTable;
+    }
+    <!-- LOGO -->
+    <div class="topbar-left">
+        <div class="text-center">
+            <a asp-controller="User" asp-action="Index" class="logo"> <img src="~/image/logo.png" width="140" style="background-color:black" alt="logo"></a>
+        </div>
+    </div>
+
+    <div class="sidebar-inner slimscrollleft">
+
+        <div id="sidebar-menu">
+            <ul>
+                <li class="menu-title">Main</li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-layers"></i> <span>User Management</span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="list-unstyled">
+
+                        @if (Convert.ToBoolean(dtRolePrivileges.Rows[1]["View"]))
+                        {
+                            <li>
+                                <a asp-controller="User" asp-action="Index" class="waves-effect">
+                                    <i class="mdi mdi-layers"></i>
+                                    <span>User</span>
+                                </a>
+                            </li>
+                        }
+                        @if (Convert.ToBoolean(dtRolePrivileges.Rows[2]["View"]))
+                        {
+                            <li>
+                                <a asp-controller="Role" asp-action="Index" class="waves-effect">
+                                    <i class="mdi mdi-layers"></i>
+                                    <span>Role</span>
+                                </a>
+                            </li>
+                        }
+                        @if (Convert.ToBoolean(dtRolePrivileges.Rows[3]["View"]) && Convert.ToBoolean(dtRolePrivileges.Rows[3]["Add"]) && Convert.ToBoolean(dtRolePrivileges.Rows[3]["Edit"]) && Convert.ToBoolean(dtRolePrivileges.Rows[3]["Delete"]) && Convert.ToBoolean(dtRolePrivileges.Rows[3]["Detail"]))
+                        {
+                            <li>
+                                <a asp-controller="RolePrivilege" asp-action="Index" class="waves-effect">
+                                    <i class="mdi mdi-layers"></i>
+                                    <span>Role Privilege</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-layers"></i> <span>Master</span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="list-unstyled">
+                        @if (Convert.ToBoolean(dtRolePrivileges.Rows[5]["View"]))
+                        {
+                            <li>
+                                <a asp-controller="Category" asp-action="Index" class="waves-effect">
+                                    <i class="mdi mdi-layers"></i>
+                                    <span>Category</span>
+                                </a>
+                            </li>
+                        }
+                        @if (Convert.ToBoolean(dtRolePrivileges.Rows[6]["View"]))
+                        {
+                            <li>
+                                <a asp-controller="Course" asp-action="Index" class="waves-effect">
+                                    <i class="mdi mdi-layers"></i>
+                                    <span>Course</span>
+                                </a>
+                            </li>
+                        }
+
+                        @if (Convert.ToBoolean(dtRolePrivileges.Rows[7]["View"]))
+                        {
+                            <li>
+                                <a asp-controller="College" asp-action="Index" class="waves-effect">
+                                    <i class="mdi mdi-layers"></i>
+                                    <span>University</span>
+                                </a>
+                            </li>
+                        }
+                        @if (Convert.ToBoolean(dtRolePrivileges.Rows[8]["View"]))
+                        {
+                            <li>
+                                <a asp-controller="CMS" asp-action="Index" class="waves-effect">
+                                    <i class="mdi mdi-layers"></i>
+                                    <span>CMS</span>
+                                </a>
+                            </li>
+                        }
+                        @if (Convert.ToBoolean(dtRolePrivileges.Rows[9]["View"]))
+                        {
+                            <li>
+                                <a asp-controller="CourseInquiry" asp-action="Index" class="waves-effect">
+                                    <i class="mdi mdi-layers"></i>
+                                    <span>Course Inquiry</span>
+                                </a>
+                            </li>
+                        }
+                        @if (Convert.ToBoolean(dtRolePrivileges.Rows[10]["View"]))
+                        {
+                            <li>
+                                <a asp-controller="Suggest" asp-action="Index" class="waves-effect">
+                                    <i class="mdi mdi-layers"></i>
+                                    <span>Suggest</span>
+                                </a>
+                            </li>
+                        }
+                        @if (Convert.ToBoolean(dtRolePrivileges.Rows[11]["View"]))
+                        {
+                            <li>
+                                <a asp-controller="Slider" asp-action="Index" class="waves-effect">
+                                    <i class="mdi mdi-layers"></i>
+                                    <span>Slider</span>
+                                </a>
+                            </li>
+                        }
+                        <li>
+                            <a asp-controller="Blog" asp-action="Index" class="waves-effect">
+                                <i class="mdi mdi-layers"></i>
+                                <span>Blog</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="NewsLetter" asp-action="Index" class="waves-effect">
+                                <i class="mdi mdi-layers"></i>
+                                <span>News Letter</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="EmailTemplate" asp-action="Index" class="waves-effect">
+                                <i class="mdi mdi-layers"></i>
+                                <span>Email Template</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="Recipient" asp-action="Index" class="waves-effect">
+                                <i class="mdi mdi-layers"></i>
+                                <span>Recipient</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="EmailSend" asp-action="Index" class="waves-effect">
+                                <i class="mdi mdi-layers"></i>
+                                <span>Email Send</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a asp-controller="Login" asp-action="ChangePassword" class="waves-effect">
+                        <i class="mdi mdi-layers"></i>
+                        <span>Change Password</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Login" asp-action="Logout" class="waves-effect">
+                        <i class="mdi mdi-layers"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+</div>
+        <div class="clearfix"></div>
+    </div> <!-- end sidebarinner -->
+</div>

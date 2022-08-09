@@ -1,0 +1,40 @@
+﻿@model EducationPortal.Models.tblCourse
+
+@{
+    ViewData["Title"] = "CourseDetails";
+}
+
+<div>
+    <h4>Course Detail</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DisplayName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DisplayName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/ApplicationDocument/CourseImages/@Model.Image" height="100" width="100" />
+        </dd>
+        <dt class="col-sm-2">
+            Status
+        </dt>
+        <dd class="col-sm-10">
+            @(Model.IsActive ? "Active":"Inactive")
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Update", "SaveCourse", new { id = Model.CourseID  },new { @class="btn btn-primary"})  &nbsp;
+    @Html.ActionLink("Back", "Index","Course",null,new { @class="clsButtonFake btn btn-danger"}) 
+</div>

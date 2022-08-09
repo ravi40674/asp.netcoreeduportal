@@ -1,0 +1,53 @@
+﻿@model EducationPortal.Models.tblEmailSendHistory
+
+@{
+    ViewData["Title"] = "Save";
+}
+
+@if (TempData["fail"] != null)
+{
+    <br />
+    <div class="alert alert-danger alert-dismmissible text-center">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Error!</strong> @TempData["fail"]
+    </div>
+}
+<h4>Email Send</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Save">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" hidden>
+                <input asp-for="EmailSendHistoryID" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="TemplateID" class="control-label"></label>
+                <select asp-for="TemplateID" class="form-control" asp-items="ViewBag.Template">
+                    <option value="">Select Template Name</option>
+                </select>
+                <span asp-validation-for="TemplateID" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsEmailSend" checked /> @Html.DisplayNameFor(model => model.IsEmailSend)
+                </label>
+            </div>
+            <div class="row">
+                &nbsp;
+                <div class="form-group">
+                    <input type="submit" value="Send" class="btn btn-primary" />
+                </div>
+                &nbsp;
+                <div class="form-group">
+                    @Html.ActionLink("Back", "Index", "EmailSend", null, new { @class = "clsButtonFake btn btn-danger" })
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

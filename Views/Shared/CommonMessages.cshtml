@@ -1,0 +1,206 @@
+﻿@model EducationPortal.ViewModel.CommonMessagesViewModel
+@using EducationPortal.Common
+@if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "userinuse")
+{
+    <div class="alert alert-danger mtp10 alert-cus">
+        @Html.Raw(string.Format(Messages.IsInUse, Convert.ToString(Model.ModuleName)))
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "inuse")
+{
+    <div class="alert alert-danger mtp10 alert-cus">
+        @Html.Raw(string.Format(Messages.IsInUse, Convert.ToString(Model.ModuleName.ToLower())))
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "added")
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @Html.Raw(string.Format(Messages.Added, Convert.ToString(Model.ModuleName)))
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "emailsent")
+{
+    <div class="alert alert-success mtp10 alert-cus" id="logout">
+        @Html.Raw(Messages.EmailSent)
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "noemailsent")
+{
+    <div class="alert alert-success mtp10 alert-cus">
+        @Html.Raw(string.Format(Messages.NoEmailSent, Convert.ToString(Model.ModuleName)))
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "updated")
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @Html.Raw(string.Format(Messages.Updated, Convert.ToString(Model.ModuleName)))
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "deleted")
+{
+    <div class="alert alert-success mtp10 alert-cus" id="logout">
+        @Html.Raw(string.Format(Messages.Deleted, Convert.ToString(Model.ModuleName)))
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "drop")
+{
+    <div class="alert alert-danger mtp10 alert-cus">
+        @Html.Raw(Messages.Drop)
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "status")
+{
+    <div class="alert alert-success mtp10 alert-cus">
+        @Html.Raw(string.Format(Messages.Status, Convert.ToString(Model.ModuleName)))
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "opentab")
+{
+    <div class="alert alert-danger mtp10 alert-cus">
+        @Html.Raw(string.Format(Messages.OpenTab, Convert.ToString(Model.ModuleName)))
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "session")
+{
+    <div class="alert alert-danger mtp10 alert-cus">
+        @Html.Raw(Messages.Session)
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "error")
+{
+    <div class="alert alert-danger mtp10 alert-cus">
+        @Html.Raw(Messages.Error)
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "notauthorized")
+{
+    <div class="alert alert-danger mtp10 alert-cus">
+        @Html.Raw(Messages.NotAuthorized)
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString() == "invalidSize")
+{
+    <div class="alert alert-danger mtp10 alert-cus">
+        Please enter image of size 100 x 100.
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "transfer")
+{
+    <div class="alert alert-success mtp10 alert-cus">
+        @Html.Raw(Model.ModuleName) has been transferred successfully.
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "frename")
+{
+    <div class="alert alert-success mtp10 alert-cus">
+        @string.Format("{0} have been rename successfully.", Model.ModuleName)
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "paste")
+{
+    <div class="alert alert-success mtp10 alert-cus">
+        @string.Format("{0} have been moved successfully.", Model.ModuleName)
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "fcreate")
+{
+    <div class="alert alert-success mtp10 alert-cus">
+        @string.Format("{0} have been created successfully.", Model.ModuleName)
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "fInvalidDel")
+{
+    <div class="alert alert-danger  mtp10 alert-cus">
+        @string.Format("Unable to delete folder, please try again.")
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "fInvalidmove")
+{
+    <div class="alert alert-danger  mtp10 alert-cus">
+        @string.Format("Unable to move folder, please try again.")
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "fldalreadyexist")
+{
+    <div class="alert alert-danger  mtp10 alert-cus">
+        @Html.Raw(Model.ModuleName) with name @Context.Request.Query["Fname"].ToString() is already exist
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "invalidchars")
+{
+    <div class="alert alert-danger  mtp10 alert-cus">
+        @Html.Raw(Model.ModuleName) name can't contain any of the following characters:  \ / : * ? " < > |
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "deletederror")
+{
+    <div class="alert alert-danger  mtp10 alert-cus">
+        @Html.Raw(Messages.DeletedError)
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "fldnotexists")
+{
+    <div class="alert alert-danger  mtp10 alert-cus">
+        @Html.Raw(Messages.InvalidRootFolder)
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "exportnorec")
+{
+    <div class="alert alert-danger  mtp10 alert-cus">
+        @Html.Raw(Messages.NoRecordtoExport)
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "imported")
+{
+    <div class="alert alert-success mtp10 alert-cus">
+        @Html.Raw(string.Format(Messages.Imported, "Documents"))
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "noviewpermission")
+{
+    <div class="alert alert-danger mtp10 alert-cus">
+        @Html.Raw(string.Format(Messages.NoViewPermission, "document"))
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "noviewpermission")
+{
+    <div class="alert alert-danger mtp10 alert-cus">
+        @Html.Raw(string.Format(Messages.NoViewPermission, "document"))
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "nodeletepermission")
+{
+    <div class="alert alert-danger mtp10 alert-cus">
+        @Html.Raw(string.Format(Messages.NoDeletePermission, "document"))
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "noeditpermission")
+{
+    <div class="alert alert-danger mtp10 alert-cus">
+        @Html.Raw(string.Format(Messages.NoEditPermission, "document"))
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "nodownloadpermission")
+{
+    <div class="alert alert-danger mtp10 alert-cus">
+        @Html.Raw(string.Format(Messages.NoDownloadPermission, "document"))
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "noprintpermission")
+{
+    <div class="alert alert-danger mtp10 alert-cus">
+        @Html.Raw(string.Format(Messages.NoPrintPermission, "document"))
+    </div>
+}
+else if (Context.Request.Query["Msg"].ToString() != null && Context.Request.Query["Msg"].ToString().ToLower() == "noaddpermission")
+{
+    <div class="alert alert-danger mtp10 alert-cus">
+        @Html.Raw(string.Format(Messages.NoAddPermission, "document"))
+    </div>
+}

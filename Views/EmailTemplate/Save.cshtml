@@ -1,0 +1,81 @@
+﻿@model EducationPortal.Models.tblTemplate
+
+@{
+    ViewData["Title"] = "Save";
+}
+
+@section style{
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.1.219/styles/kendo.default-v2.min.css" />
+    <link href="~/css/jquery-confirm.min.css" rel="stylesheet" />
+}
+@{
+    System.Data.DataTable dtRolePrivileges = ViewData["RolePrivileges"] as System.Data.DataTable;
+}
+<br />
+@if (TempData["fail"] != null)
+{
+    <div class="alert alert-danger alert-dismmissible text-center">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Error!</strong> @TempData["fail"]
+    </div>
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="page-title-box">
+                <h4 class="page-title">@(Model.TemplateID==0 ? "Add":"Update") Template</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <form asp-action="Save" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" hidden>
+                <input asp-for="TemplateID" class="form-control" />
+                <input asp-for="CreatedBy" class="form-control" />
+                <input asp-for="CreatedDate" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subject" class="control-label"></label>
+                <input asp-for="Subject" class="form-control" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                @*maxlength="250" name="Description class="ckeditor" id="Description"*@
+                <textarea asp-for="Description" name="Description" id="Description" class="form-control ckeditor"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" checked asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            &nbsp;&nbsp;
+            <div class="row" style="align-content:center">
+                <div class="form-group">
+                    <input type="submit" value="@(Model.TemplateID==0 ? "Add":"Update")" class="btn btn-primary" />
+                </div>
+                &nbsp;
+                <div class="form-group">
+                    @Html.ActionLink("Back", "Index", "EmailTemplate", null, new { @class = "clsButtonFake btn btn-danger" })
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@section scripts{
+    <script src="~/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/ckeditor/ckeditor.js"></script>
+    <script>
+        $(document).ready(function () {
+            CKEDITOR.replace('#Description');
+        });
+    </script>
+}
